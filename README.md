@@ -4,7 +4,7 @@ This'll be our main repository for our group project in this course
 
 ## Project Setup
 
-[ AS OF NOW I HAVEN'T MADE THE BASE CODE SO DON'T CLONE YET ]
+[ AS OF NOW I HAVEN'T MADE THE BASE CODE YET so i wouldn't advice to clone this yet unless we have a common starting point]
 
 This is just a quick rundown on how to setup and run our project. Might be helpful if you haven't used github that much yet.
 
