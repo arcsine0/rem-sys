@@ -1,13 +1,14 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom'
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Home from './pages/Home';
+import Landing from './Landing';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Home />
-  </React.StrictMode>
+  <BrowserRouter>
+    <Landing />
+  </BrowserRouter>
 );
 reportWebVitals();
