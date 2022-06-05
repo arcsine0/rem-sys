@@ -1,16 +1,18 @@
-## Real (E?)State Monitoring System
+# Real (E?)State Monitoring System
 This'll be our main repository for our group project in this course
 
 
 ## Project Setup
 
-[ AS OF NOW I HAVEN'T MADE THE BASE CODE YET so i wouldn't advice to clone this yet unless we have a common starting point]
+`[ Make sure to have Git and NodeJS installed on your system first ]`
+
+This project is built with the React Framework because of the nature of a monitoring app. It helps with the updating of data in real time. Those that have very little experience with react, I will put a breakdown of the project as well as how to code it here in the repo.
 
 This is just a quick rundown on how to setup and run our project. Might be helpful if you haven't used github that much yet.
 
 Clone this repo on your local directory using the following
 
-```
+``
 git clone https://github.com/arcsine0/rsm-sys.git
 ```
 
