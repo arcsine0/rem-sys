@@ -1,5 +1,5 @@
 # How to Run this client?
-Simply go to your terminal of choice, make sure that it's routed / run in the clients directory and type the following:
+In your terminal, go to the clients folder or open up a terminal inside that folder, then run
 ```
 npm start
 ```
