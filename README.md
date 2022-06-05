@@ -16,7 +16,7 @@ Clone this repo on your local directory using the following
 git clone https://github.com/arcsine0/rsm-sys.git
 ```
 
-Or if you're using Github Desktop, do File > Clone Repo > URL > paste the same link as above
+Or if you're using Github Desktop, do `File > Clone Repo > URL > paste the same link as above`
 
 To organize things, I made separate branches for each sections of our project. Currently, there are branches for UI, Server, and Database. Pull and push on these specific branches depending on your contribution to the project (or if you just want to).
 
