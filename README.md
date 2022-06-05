@@ -12,7 +12,7 @@ This is just a quick rundown on how to setup and run our project. Might be helpf
 
 Clone this repo on your local directory using the following
 
-``
+```
 git clone https://github.com/arcsine0/rsm-sys.git
 ```
 
