@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-import test from './test.css'
+import './test.css'
 
 function Test(props) {
 

@@ -53,4 +53,19 @@ export default AnotherComponent;
 
 these components can be re-used and be used anywhere as long as the directory on imports is correct
 
+# How do you then style these components?
+Just create a css file in the same folder and import it in the component you want to use it in. In my experience I just name these css files the same as the component itself
+```
+import './Component.css'
 
+function Component() {
+    return(
+        <div>Hello World</div>
+    )
+}
+
+export default Component;
+```
+
+That's it! (for now)
+any other questions or if this is harder than what you can do (if you haven't used React yet), just simply dm me in the gc and I'd be more than happy to discuss and work with you.
