@@ -35,4 +35,7 @@ git push origin (branch)
 ```
 -- please do be brief but descriptive on the commit message so we know what you updated
 
+## Don't know or have no experience with React?
+I have a tutorial / breakdown inside the client folder's README, or just click on the client folder here on github to see it. If you think this thingy may be harder than what you can do / contribute, I'd be more than happy to discuss and go with any method you can think of.
+
 That's it! (for now)
