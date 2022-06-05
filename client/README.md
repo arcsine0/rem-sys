@@ -51,5 +51,6 @@ function AnotherComponent() {
 export default AnotherComponent;
 ```
 
+these components can be re-used and be used anywhere as long as the directory on imports is correct
 
 
