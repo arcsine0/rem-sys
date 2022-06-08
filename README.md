@@ -13,7 +13,7 @@ This is just a quick rundown on how to setup and run our project. Might be helpf
 Clone this repo on your local directory using the following
 
 ```
-git clone https://github.com/arcsine0/rsm-sys.git
+git clone https://github.com/arcsine0/rem-sys.git
 ```
 
 Or if you're using Github Desktop, do `File > Clone Repo > URL > paste the same link as above`
