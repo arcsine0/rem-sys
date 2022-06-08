@@ -1,6 +1,8 @@
 # Real Estate Monitoring System
 This'll be our main repository for our group project in this course
 
+# !!! This will be replaced by a template soon to make it easier !!!
+yes.
 
 ## Project Setup
 
