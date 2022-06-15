@@ -18,8 +18,12 @@ git clone https://github.com/arcsine0/rem-sys.git
 
 Or if you're using Github Desktop, do `File > Clone Repo > URL > paste the same link as above`
 
-To organize things, I made separate branches for each sections of our project. Currently, there are branches for UI, Server, and Database. Pull and push on these specific branches depending on your contribution to the project (or if you just want to).
+After having a copy of the code on your local machine, go to the clients folder and run
+```
+npm install
+```
 
+Make sure to push your updates on a separate branch, I will then review the code and merge it afterwards
 oh yeah to pull from the branch first you gotta make sure to be on that branch
 
 ```
