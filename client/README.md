@@ -1,71 +1,65 @@
-# How to Run this client?
-In your terminal, go to the clients folder or open up a terminal inside that folder, then run
-```
-npm start
-```
-To stop the client, just go to the terminal and hit `CTRL + C`
+# [Start Bootstrap - SB Admin 2](https://startbootstrap.com/theme/sb-admin-2/)
 
-# Client Directory and Structure
-Inside the client folder you will see folders named `public` and `src`. The `src` folder is really the only folder you should know about. 
+[SB Admin 2](https://startbootstrap.com/theme/sb-admin-2/) is an open source admin dashboard theme for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/).
 
-The `src` folder then contains the `components` and `pages` that our app will have and navigate through, as well as some other codes as well. The `components` are essentially just elements in the page (i.e. a card) that we can import in anything within the client directory. The `pages` are, well pages that are rendered and navigated through inside the `Landing.js` file. (the pages are also called components in React context, i just named them as pages based on their use case)
+For the legacy Bootstrap 3 version of this theme, you can view the [last stable release](https://github.com/StartBootstrap/startbootstrap-sb-admin-2/releases/tag/v3.3.7%2B1) of SB Admin 2 for Bootstrap 3.
 
-# Using components
-Components are written in a function and the actual markup is then returned by it. To use this component on another component, you have to export it on the component code and import it to the other.
-Ex. `Component.js` (the first letter should be capitalized)
-```
-function Component() {
-    return(
-        <div>Hello World</div>
-    )
-}
+## Preview
 
-export default Component;
-```
-you can check the test component in `components` as an example.
+[![SB Admin 2 Preview](https://assets.startbootstrap.com/img/screenshots/themes/sb-admin-2.png)](https://startbootstrap.github.io/startbootstrap-sb-admin-2/)
 
-To import this, use
-```
-import Component from '[directory]'
+**[Launch Live Preview](https://startbootstrap.github.io/startbootstrap-sb-admin-2/)**
 
-function AnotherComponent() {
-    return(
-        <Component />
-    )
-}
+## Status
 
-export default AnotherComponent;
-```
-make sure that the directory of the component is a relative path, use `./` to refer to files within the same folder, and `../` for a folder above so and so forth. TLDR na more periods before the slash, the higher the heirarchy to access  
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/StartBootstrap/startbootstrap-sb-admin-2/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/startbootstrap-sb-admin-2.svg)](https://www.npmjs.com/package/startbootstrap-sb-admin-2)
+[![Build Status](https://travis-ci.org/StartBootstrap/startbootstrap-sb-admin-2.svg?branch=master)](https://travis-ci.org/StartBootstrap/startbootstrap-sb-admin-2)
+[![dependencies Status](https://david-dm.org/StartBootstrap/startbootstrap-sb-admin-2/status.svg)](https://david-dm.org/StartBootstrap/startbootstrap-sb-admin-2)
+[![devDependencies Status](https://david-dm.org/StartBootstrap/startbootstrap-sb-admin-2/dev-status.svg)](https://david-dm.org/StartBootstrap/startbootstrap-sb-admin-2?type=dev)
 
-in this instance
-```
-import Component from './Component'
+## Download and Installation
 
-function AnotherComponent() {
-    return(
-        <Component />
-    )
-}
+To begin using this template, choose one of the following options to get started:
 
-export default AnotherComponent;
-```
+* [Download the latest release on Start Bootstrap](https://startbootstrap.com/theme/sb-admin-2/)
+* Install via npm: `npm i startbootstrap-sb-admin-2`
+* Clone the repo: `git clone https://github.com/StartBootstrap/startbootstrap-sb-admin-2.git`
+* [Fork, Clone, or Download on GitHub](https://github.com/StartBootstrap/startbootstrap-sb-admin-2)
 
-these components can be re-used and be used anywhere as long as the directory on imports is correct
+## Usage
 
-# How do you then style these components?
-Just create a css file in the same folder and import it in the component you want to use it in. In my experience I just name these css files the same as the component itself
-```
-import './Component.css'
+After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
 
-function Component() {
-    return(
-        <div>Hello World</div>
-    )
-}
+### Gulp Tasks
 
-export default Component;
-```
+* `gulp` the default task that builds everything
+* `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
+* `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
+* `gulp js` minifies the themes JS file
+* `gulp vendor` copies dependencies from node_modules to the vendor directory
 
-That's it! (for now)
-any other questions or if this is harder than what you can do (if you haven't used React yet), just simply dm me in the gc and I'd be more than happy to discuss and work with you.
+You must have npm installed globally in order to use this build environment. This theme was built using node v11.6.0 and the Gulp CLI v2.0.1. If Gulp is not running properly after running `npm install`, you may need to update node and/or the Gulp CLI locally.
+
+## Bugs and Issues
+
+Have a bug or an issue with this template? [Open a new issue](https://github.com/StartBootstrap/startbootstrap-sb-admin-2/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](https://startbootstrap.com/theme/sb-admin-2/).
+
+## About
+
+Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+
+* <https://startbootstrap.com>
+* <https://twitter.com/SBootstrap>
+
+Start Bootstrap was created by and is maintained by **[David Miller](https://davidmiller.io/)**.
+
+* <https://davidmiller.io>
+* <https://twitter.com/davidmillerhere>
+* <https://github.com/davidtmiller>
+
+Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+
+## Copyright and License
+
+Copyright 2013-2021 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE) license.
