@@ -25,15 +25,16 @@ router.get('/user/:email/:pass', (req, res) => {
 
     conn.connect();
 
-    var query = `SELECT id FROM users WHERE email = "${req.params.email}" AND password = "${req.params.pass}"`;  
+    var query = `SELECT id, fname FROM users WHERE email = "${req.params.email}" AND password = "${req.params.pass}"`;  
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
+
+        var data = ['success', rows[0].fname];
         if (rows.length > 0) {
-            res.send('success');
+            res.send(data);
         } else {
             res.send('failed');
         }
-        
     });
 });
 router.post('/user/register', (req, res) => {
