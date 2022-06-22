@@ -1,9 +1,6 @@
 # Real Estate Monitoring System
 This'll be our main repository for our group project in this course
 
-# !!! This will be replaced by a template soon to make it easier !!!
-it'll still be the same repo here, the contents will just change
-
 ## Project Setup
 
 `[ Make sure to have Git and NodeJS installed on your system first ]`
@@ -40,8 +37,5 @@ git commit -m "commit message"
 git push origin (branch)
 ```
 -- please do be brief but descriptive on the commit message so we know what you updated
-
-## Don't know or have no experience with React?
-I have a tutorial / breakdown inside the client folder's README, or just click on the client folder here on github to see it. If you think this thingy may be harder than what you can do / contribute, I'd be more than happy to discuss and go with any method you can think of.
 
 That's it! (for now)
