@@ -17,7 +17,8 @@ $(document).ready(() => {
             },
             success: (data) => {
                 if (data) {
-                    if (data == 'success') {
+                    if (data[0] == 'success') {
+                        localStorage.setItem('username', data[1]);
                         location.href = '../index.html';
                     }
                 }
