@@ -19,7 +19,10 @@ $(document).ready(() => {
                 if (data) {
                     if (data[0] == 'success') {
                         localStorage.setItem('username', data[1]);
+                        localStorage.setItem('role', data[2]);
                         location.href = '../index.html';
+                    } else {
+                        
                     }
                 }
             },
@@ -32,7 +35,6 @@ $(document).ready(() => {
 
     $('#register').on('click', () => {
         var f_data = $('form').serializeArray();
-        var json_data = JSON.stringify(f_data);
         var url = `http://localhost:4000/user/register`;
         $.ajax({
             url: url,

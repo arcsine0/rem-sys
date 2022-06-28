@@ -25,16 +25,77 @@ router.get('/user/:email/:pass', (req, res) => {
 
     conn.connect();
 
-    var query = `SELECT id, fname FROM users WHERE email = "${req.params.email}" AND password = "${req.params.pass}"`;  
+    var query = `SELECT id, fname, role FROM users WHERE email = "${req.params.email}" AND password = "${req.params.pass}"`;  
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 
-        var data = ['success', rows[0].fname];
+        var data = ['success', rows[0].fname, rows[0].role];
         if (rows.length > 0) {
             res.send(data);
         } else {
             res.send('failed');
         }
+    });
+});
+router.get('/users/list', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const conn = mysql.createConnection({
+        host: 'localhost',
+        port: '3307',
+        user: 'root',
+        password: '',
+        database: 'rem_data'
+    });
+
+    conn.connect();
+
+    var query = 'SELECT * FROM users';
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
+router.post('/users/edit', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    const conn = mysql.createConnection({
+        host: 'localhost',
+        port: '3307',
+        user: 'root',
+        password: '',
+        database: 'rem_data'
+    });
+
+    conn.connect();
+
+    var query = `UPDATE users SET role = "${data.role}", email = "${data.email}", fname = "${data.fname}", mname = "${data.mname}", lname = "${data.lname}" WHERE id = ${data.id}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
+    });
+});
+router.delete('/users/edit', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    const conn = mysql.createConnection({
+        host: 'localhost',
+        port: '3307',
+        user: 'root',
+        password: '',
+        database: 'rem_data'
+    });
+
+    conn.connect();
+
+    var query = `DELETE FROM users WHERE id = ${data.value}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
     });
 });
 router.post('/user/register', (req, res) => {
