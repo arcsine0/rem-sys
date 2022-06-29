@@ -44,9 +44,36 @@ $(document).ready(() => {
     }
 
     var row_id;
+
+    // temp solution to perms
+    function checkPerms(r) {
+        var storedR = localStorage.getItem('role');
+        switch(storedR) {
+            case 'admin':
+                if (r == 'admin' || r == 'staff' || r == 'member' || r == 'null') {
+                    return true;
+                } else { return false; }
+                break;
+            case 'staff':
+                if (r == 'staff' || r == 'member') {
+                    return true;
+                } else { return false; }
+                break;
+            case 'member':
+            default:
+                if (r == 'admin' || r == 'staff') {
+                    return false;
+                } else { return true; }
+                break;
+        }
+    }
+
+    var check_role;
     $('#staff_table').on('click', '.data-edit', (event) => {
         var row = $(event.target.closest('tr')).children('td');
         var r_id = $(event.target.closest('tr')).find('th');
+        
+        check_role= $(event.target.closest('tr')).find('.row-role').html();
         var existing = [];
         row.each((i, item) => {
             if ($(item).attr('class') != 'actions') {
@@ -67,35 +94,42 @@ $(document).ready(() => {
         var f_data = $('#edit-form').serializeArray();
         f_data.push({name: "id", value: row_id});
 
-        $.ajax({
-            url: 'http://localhost:4000/users/edit',
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // },
-            type: 'POST',
-            data: f_data,
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: false
-            },
-            success: (data) => {
-                if (data) {
-                    if (data == 'success') {
-                        console.log('saved');
-                        refreshUsers();
+        if (checkPerms(check_role) === false) {
+            console.log('You do not have permission to edit');
+            $('#errorModal').modal('show');
+        } else {
+            $.ajax({
+                url: 'http://localhost:4000/users/edit',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // },
+                type: 'POST',
+                data: f_data,
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: false
+                },
+                success: (data) => {
+                    if (data) {
+                        if (data == 'success') {
+                            console.log('saved');
+                            refreshUsers();
+                        }
                     }
+                },
+                error: (err) => {
+                    console.log(err);
                 }
-            },
-            error: (err) => {
-                console.log(err);
-            }
-        });
+            });
+        }  
     });
     $('#staff_table').on('click', '.data-delete', (event) => {
         var r_id = $(event.target.closest('tr')).find('th');
         var r_role = $(event.target.closest('tr')).find('.row-role').html();
-        if (r_role == 'admin') {
-            console.log('cannot delete: reason admin');
+
+        if (checkPerms(r_role) === false) {
+            console.log('You do not have permission to delete');
+            $('#errorModal').modal('show');
         } else {
             $.ajax({
                 url: 'http://localhost:4000/users/edit',
@@ -122,30 +156,36 @@ $(document).ready(() => {
             });
         }
     });
-    $('#add-row').on('click', () => {
+    $('#add-row').on('click', (event) => {
         var f_data = $('.table_add form').serializeArray();
-        $.ajax({
-            url: 'http://localhost:4000/users/add',
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // },
-            type: 'POST',
-            data: f_data,
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: false
-            },
-            success: (data) => {
-                if (data) {
-                    if (data == 'success') {
-                        console.log('saved');
-                        refreshUsers()
+        var r_role = $('#role_select').val();
+
+        if (checkPerms(r_role) === false) {
+            $('#errorModal').modal('show');
+        } else {
+            $.ajax({
+                url: 'http://localhost:4000/users/add',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // },
+                type: 'POST',
+                data: f_data,
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: false
+                },
+                success: (data) => {
+                    if (data) {
+                        if (data == 'success') {
+                            console.log('saved');
+                            refreshUsers()
+                        }
                     }
+                },
+                error: (err) => {
+                    console.log(err);
                 }
-            },
-            error: (err) => {
-                console.log(err);
-            }
-        });
+            });
+        }    
     });
 });

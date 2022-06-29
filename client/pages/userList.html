@@ -258,7 +258,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span id="nav-username" class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -338,6 +338,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="error" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="errorModal_label">Error</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          You do not have permission to make changes.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
@@ -366,8 +382,8 @@
                                 <tr class="table_add">
                                     <form>
                                         <td></td>
-                                        <td>
-                                            <select name="role" class="form-select" aria-label="RoleSelect">
+                                        <td class="role_options">
+                                            <select id="role_select" name="role" class="form-select" aria-label="RoleSelect">
                                                 <option value="admin">Admin</option>
                                                 <option value="staff">Staff</option>
                                                 <option value="member">Member</option>
