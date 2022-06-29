@@ -7,7 +7,7 @@ $(document).ready(() => {
         var pass = f_data[1].value;
 
         // test@email.com
-        var url = `http://localhost:4000/user/${email}/${pass}`;
+        var url = `http://localhost:4000/user/login/${email}/${pass}`;
         $.ajax({
             url: url,
             type: 'GET',
@@ -20,6 +20,7 @@ $(document).ready(() => {
                     if (data[0] == 'success') {
                         localStorage.setItem('username', data[1]);
                         localStorage.setItem('role', data[2]);
+                        localStorage.setItem('id', data[3]);
                         location.href = '../index.html';
                     } else {
                         

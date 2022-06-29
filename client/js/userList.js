@@ -1,11 +1,9 @@
 $(document).ready(() => {
-    var url = 'http://localhost:4000/users/list';
-
-    var table_body = $('#staff_table tbody');
+    var table_body = $('#table_data');
 
     function getUsers() {
         $.ajax({
-            url: url,
+            url: 'http://localhost:4000/users/list',
             method: 'GET',
             crossDomain: true,
             xhrFields: {
@@ -39,7 +37,12 @@ $(document).ready(() => {
     }
     getUsers();
 
-    var row_id
+    function refreshUsers() {
+        $('#table_data').empty();
+        getUsers();
+    }
+
+    var row_id;
     $('#staff_table').on('click', '.data-edit', (event) => {
         var row = $(event.target.closest('tr')).children('td');
         var r_id = $(event.target.closest('tr')).find('th');
@@ -78,8 +81,7 @@ $(document).ready(() => {
                 if (data) {
                     if (data == 'success') {
                         console.log('saved');
-                        $('#staff_table tbody').empty();
-                        getUsers();
+                        refreshUsers();
                     }
                 }
             },
@@ -109,8 +111,7 @@ $(document).ready(() => {
                     if (data) {
                         if (data == 'success') {
                             console.log('saved');
-                            $('#staff_table tbody').empty();
-                            getUsers();
+                            refreshUsers()
                         }
                     }
                 },
@@ -118,9 +119,32 @@ $(document).ready(() => {
                     console.log(err);
                 }
             });
-            $('#staff_table tbody').empty();
-            getUsers();
         }
-        
+    });
+    $('#add-row').on('click', () => {
+        var f_data = $('.table_add form').serializeArray();
+        $.ajax({
+            url: 'http://localhost:4000/users/add',
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },
+            type: 'POST',
+            data: f_data,
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: false
+            },
+            success: (data) => {
+                if (data) {
+                    if (data == 'success') {
+                        console.log('saved');
+                        refreshUsers()
+                    }
+                }
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
     });
 });
