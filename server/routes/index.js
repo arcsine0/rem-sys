@@ -82,7 +82,7 @@ router.post('/users/add', (req, res) => {
 router.post('/users/edit', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
-    var query = `UPDATE users SET role = "${data.role}", email = "${data.email}", fname = "${data.fname}", mname = "${data.mname}", lname = "${data.lname}" WHERE id = ${data.id}`;
+    var query = `UPDATE users SET role = "${data.role}", email = "${data.email}", password = "${data.password}", fname = "${data.fname}", mname = "${data.mname}", lname = "${data.lname}" WHERE id = ${data.id}`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 

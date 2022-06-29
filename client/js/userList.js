@@ -17,6 +17,7 @@ $(document).ready(() => {
                                             <th scope="row">${el.id}</th>
                                             <td class="row-role">${el.role}</td>
                                             <td>${el.email}</td>
+                                            <td>${el.password}</td>
                                             <td>${el.fname}</td>
                                             <td>${el.mname}</td>
                                             <td>${el.lname}</td>
