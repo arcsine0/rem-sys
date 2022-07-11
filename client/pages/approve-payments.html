@@ -1,4 +1,4 @@
-<!-- Database of transactions -->
+<!-- Staff & Admin: approve and reject payment -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Transaction History</title>
+    <title>Payments</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -76,13 +76,13 @@
         <!-- <div class="sidebar-heading">Interface</div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="./payment.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Payment</span></a
           >
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="./transaction-history.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Transaction History</span></a
@@ -389,7 +389,7 @@
                   <span
                     class="mr-2 d-none d-lg-inline text-gray-600 small"
                     id="user-type"
-                    >Member</span
+                    >Admin</span
                   >
                   <img
                     class="img-profile rounded-circle"
@@ -437,73 +437,53 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Transaction History</h1>
+              <h1 class="h3 mb-0 text-gray-800">Payments</h1>
             </div>
 
              <!-- Database -->
                     <div class="card shadow mb-4">
-                        <!-- <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div> -->
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Verify Payments</h6>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Transaction ID</th>
+                                            <th>Member Name</th>
                                             <th>Property Name</th>
-                                            <th>Status</th>
+                                            <th>Reference No.</th>
+                                            <th>Mode of Payment</th>
+                                            <th>Date Received</th>
+                                            <th>Amount Received</th>
+                                            <th>Attached Receipt</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>5535451</td>
+                                            <td>Austin, Robertson A.</td>
                                             <td>Property 1</td>
+                                            <td>11121512454</td>
+                                            <td>GCash</td>
+                                            <td>July 12, 2022</td>
+                                            <td>P10,000.00</td>
                                             <td>
-                                                <span class="badge badge-success" id="payment-status">Payment Approved</span>
+                                                File preview?
                                             </td>
                                             <td>
-                                                <!-- "View Payment" will preview the file attachment -->
-                                                <a href="#" >
-                                                    <button type="button" class="btn btn-primary">View Payment</button>
-                                                </a> 
-                                                 <a href="./property-info.html" >
-                                                    <button type="button" class="btn btn-info">View Property</button>
-                                                </a> 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Property 2</td>
-                                            <td>Marikina City</td>
-                                            <td>
-                                                <span class="badge badge-secondary" id="payment-status">Pending Payment</span>
-                                            </td>
-                                            <td>
-                                                <!-- "View Payment" will preview the file attachment -->
-                                                <a href="#" >
-                                                    <button type="button" class="btn btn-primary">View Payment</button>
-                                                </a> 
-                                                 <a href="./property-info.html" >
-                                                    <button type="button" class="btn btn-info">View Property</button>
-                                                </a> 
-                                            </td>
-                                        </tr>
+                                                 <a href="#" class="btn btn-success btn-circle btn-sm">
+                                                    <i class="fas fa-check"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                                    <i class="fas fa-xmark"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-primary btn-circle btn-sm">
+                                                    <i class="fas fa-envelope"></i>
+                                                </a>
 
-                                        <tr>
-                                            <td>Property 3</td>
-                                            <td>Quezon City</td>
-                                            <td>
-                                                <span class="badge badge-danger" id="payment-status">Payment Rejected</span>
-                                            </td>
-                                            <td>
-                                                <!-- "View Payment" will preview the file attachment -->
-                                                <a href="#" >
-                                                    <button type="button" class="btn btn-primary">View Payment</button>
-                                                </a> 
-                                                 <a href="./property-info.html" >
-                                                    <button type="button" class="btn btn-info">View Property</button>
-                                                </a> 
                                             </td>
                                         </tr>
                                     </tbody>
