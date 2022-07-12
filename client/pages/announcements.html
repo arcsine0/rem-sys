@@ -9,7 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Announcements</title>
+    <title>User List</title>
+
+     <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="../css/style.css" />
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +22,6 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../css/announce.css" rel="stylesheet">
 
 </head>
 
@@ -29,60 +31,100 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul
+        class="navbar-nav navbar-light sidebar sidebar-light accordion"
+        id="accordionSidebar"
+      >
+        <!-- Sidebar - Brand -->
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="../index.html"
+        >
+          <div class="sidebar-brand-icon">
+            <img src="../img/logo.png" alt="" class="logo" />
+          </div>
+          <div class="sidebar-brand-text mx-3">Real Estate System</div>
+        </a>
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Real Estate System</div>
-            </a>
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a
+          >
+        </li>
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="./data.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+        <!-- Divider -->
+        <!-- <hr class="sidebar-divider" /> -->
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+        <!-- Heading -->
+        <!-- <div class="sidebar-heading">Interface</div> -->
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="./payment.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Payment</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./transaction-history.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Transaction History</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./inbox.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Inbox</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./profile.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Profile</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./settings.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Settings</span></a
+          >
+        </li>
+        <li class="adminControls nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUsers"
+            aria-expanded="true"
+            aria-controls="collapseUsers"
+          >
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Users</span>
+          </a>
+          <div
+            id="collapseUsers"
+            class="collapse"
+            aria-labelledby="headingUsers"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Set Users:</h6>
+              <a class="collapse-item" href="./userList.html">List</a>
             </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="../index.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Profile</span></a>
-            </li>
-            <li class="adminControls nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUsers"
-                    aria-expanded="true" aria-controls="collapseUsers">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Users</span>
-                </a>
-                <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Set Users: </h6>
-                        <a class="collapse-item" href="./userList.html">List</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="./announcements.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Announcements</span>
-                </a>
-            </li>
-        </ul>
+          </div>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="./announcements.html">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Announcements</span>
+            </a>
+          </li>
+      </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -296,12 +338,12 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="modal fade admin_option" id="addAnnounce" tabindex="-1" role="dialog" aria-labelledby="addAnnounce"
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Post Announcement</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Edit Row</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -309,23 +351,43 @@
                             <div class="modal-body">
                                 <form id="edit-form" class="row g-3">
                                     <div class="col-12">
-                                        <label class="form-label"">Title</label>
-                                        <input name="title" id="title" type="text" class="form-control" placeholder="">
+                                        <label class="form-label"">Role</label><br>
+                                        <select name="role" class="form-select" aria-label="RoleSelect">
+                                            <option value="admin">Admin</option>
+                                            <option value="staff">Staff</option>
+                                            <option value="member">Member</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label"">Email</label>
+                                        <input name="email" id="edit-email" type="email" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label"">Password</label>
+                                        <input name="password" id="edit-pass" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label"">Body</label>
-                                        <textarea name="body" id="body" class="form-control"></textarea>
+                                        <label class="form-label"">First Name</label>
+                                        <input name="fname" id="edit-fname" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label"">Middle Name</label>
+                                        <input name="mname" id="edit-mname" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label"">Last Name</label>
+                                        <input name="lname" id="edit-lname" type="text" class="form-control" placeholder="">
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button id="save-add" type="button" class="btn btn-primary" data-dismiss="modal">Post</button>
+                                <button id="save-edit" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="viewAnn" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+                <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="error" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -425,8 +487,8 @@
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin-2.min.js"></script>
 
-    <script src="../js/announcements.js"></script>
     <script src="../js/cookies.js"></script>
+    <script src="../js/announcements.js"></script>
 
 </body>
 
