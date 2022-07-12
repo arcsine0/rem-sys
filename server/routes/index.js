@@ -83,19 +83,13 @@ router.get('/users/list', (req, res) => {
 });
 router.post('/user/announcements', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
+    
+    var query = `INSERT INTO announcements (poster, title, body) VALUES ("${data.name}", "${data.title}", "${data.body}")`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
 
-    let del_id = qs.stringify(data);
-    console.log(del_id);
-    // data.id.forEach((el, i) => {
-    //     del_id += el + ", " ;
-    // })
-    // console.log(del_id);
-    // var query = ``;
-    // conn.query(query, (err, rows, fields) => {
-    //     if (err) throw err;
-
-    //     res.send('success');
-    // });
+        res.send('success');
+    });
 });
 router.post('/users/add', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
@@ -121,6 +115,22 @@ router.delete('/users/edit', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
     var query = `DELETE FROM users WHERE id = ${data.value}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
+    });
+});
+router.delete('/user/announcements', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    
+    var del_id_arr = "";
+    data.id.forEach((el, i) => {
+        del_id_arr += el + "," ;
+    })
+
+    var del_id = del_id_arr.slice(0, -1);
+    var query = `DELETE FROM announcements WHERE id IN (${del_id})`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 

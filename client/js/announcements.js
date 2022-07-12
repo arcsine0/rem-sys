@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    var user_name = localStorage.getItem('username');
     function loadAnnouncements() {
         $.ajax({
             url: 'http://localhost:4000/user/announcements/',
@@ -36,6 +37,11 @@ $(document).ready(() => {
         });
     }
     loadAnnouncements();
+
+    function refreshData() {
+        $('#table_data').empty();
+        loadAnnouncements();
+    }
     $('#del-ann').on('click', () => {
         var row = $('#table_data').children('tr');
         var id_arr = [];
@@ -53,7 +59,7 @@ $(document).ready(() => {
             // headers: {
             //     'Content-Type': 'application/json'
             // },
-            type: 'POST',
+            type: 'DELETE',
             data: id_arr,
             crossDomain: true,
             xhrFields: {
@@ -63,6 +69,7 @@ $(document).ready(() => {
                 if (data) {
                     if (data == 'success') {
                         console.log('saved');
+                        refreshData();
                     }
                 }
             },
@@ -74,4 +81,32 @@ $(document).ready(() => {
     $('#add-ann').on('click', () => {
         $('#addAnnounce').modal('show');
     })
+    $('#save-add').on('click', () => {
+        var f_data = $('#ann-form').serializeArray();
+        f_data.push({name: "name", value: user_name})
+        console.log(f_data);
+        $.ajax({
+            url: 'http://localhost:4000/user/announcements',
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },
+            type: 'POST',
+            data: f_data,
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: false
+            },
+            success: (data) => {
+                if (data) {
+                    if (data == 'success') {
+                        console.log('saved');
+                        refreshData();
+                    }
+                }
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    });
 });
