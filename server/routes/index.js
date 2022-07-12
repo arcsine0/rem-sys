@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const qs = require('querystring');
 const app = express();
 
 const mysql = require('mysql');
@@ -82,18 +83,19 @@ router.get('/users/list', (req, res) => {
 });
 router.post('/user/announcements', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
-    var del_id = "";
 
-    data.id.forEach((el, i) => {
-        del_id += el + ", " ;
-    })
+    let del_id = qs.stringify(data);
     console.log(del_id);
-    var query = ``;
-    conn.query(query, (err, rows, fields) => {
-        if (err) throw err;
+    // data.id.forEach((el, i) => {
+    //     del_id += el + ", " ;
+    // })
+    // console.log(del_id);
+    // var query = ``;
+    // conn.query(query, (err, rows, fields) => {
+    //     if (err) throw err;
 
-        res.send('success');
-    });
+    //     res.send('success');
+    // });
 });
 router.post('/users/add', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));

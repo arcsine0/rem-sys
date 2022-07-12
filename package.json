@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/arcsine0/rsm-sys/issues"
   },
-  "homepage": "https://github.com/arcsine0/rsm-sys#readme"
+  "homepage": "https://github.com/arcsine0/rsm-sys#readme",
+  "dependencies": {
+    "querystring": "^0.2.1"
+  }
 }
