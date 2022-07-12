@@ -67,6 +67,30 @@ router.get('/user/announcements', (req, res) => {
         }
     });
 });
+router.get('/user/transactions', (req, res) => {
+    var query = 'SELECT * FROM transactions';
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
+router.get('/user/payments', (req, res) => {
+    var query = 'SELECT * FROM payments';
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
 router.get('/users/list', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     
