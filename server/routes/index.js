@@ -54,10 +54,21 @@ router.get('/user/profile/:id', (req, res) => {
     });  
 
 });
+router.get('/user/announcements', (req, res) => {
+    var query = 'SELECT * FROM announcements';
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
 router.get('/users/list', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     
-
     var query = 'SELECT * FROM users';
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
@@ -67,6 +78,21 @@ router.get('/users/list', (req, res) => {
         } else {
             res.send('failed');
         }
+    });
+});
+router.post('/user/announcements', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    var del_id = "";
+
+    data.id.forEach((el, i) => {
+        del_id += el + ", " ;
+    })
+    console.log(del_id);
+    var query = ``;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
     });
 });
 router.post('/users/add', (req, res) => {

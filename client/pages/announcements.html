@@ -9,17 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Profile</title>
+    <title>Announcements</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/admin.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/announce.css" rel="stylesheet">
 
 </head>
 
@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,8 +43,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="pages/data.html">
+            <li class="nav-item active">
+                <a class="nav-link" href="./data.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -58,13 +58,13 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="./index.html">
+            <li class="nav-item">
+                <a class="nav-link" href="../index.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Profile</span></a>
             </li>
             <li class="adminControls nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUsers"
                     aria-expanded="true" aria-controls="collapseUsers">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Users</span>
@@ -72,12 +72,12 @@
                 <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Set Users: </h6>
-                        <a class="collapse-item" href="./pages/userList.html">List</a>
+                        <a class="collapse-item" href="./userList.html">List</a>
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./pages/announcements.html">
+            <li class="nav-item active">
+                <a class="nav-link" href="./announcements.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Announcements</span>
                 </a>
@@ -265,7 +265,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span id="nav-username" class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -296,26 +296,76 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+                <div class="modal fade admin_option" id="addAnnounce" tabindex="-1" role="dialog" aria-labelledby="addAnnounce"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Post Announcement</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="edit-form" class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label"">Title</label>
+                                        <input name="title" id="title" type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label"">Body</label>
+                                        <textarea name="body" id="body" class="form-control"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button id="save-add" type="button" class="btn btn-primary" data-dismiss="modal">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="viewAnn" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="errorModal_label">Error</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          You do not have permission to make changes.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">User Profile</h1>
-                    </div>
+                    <h1 class="h3 mb-4 text-gray-800">Announcements</h1>
 
-                    <!-- Content Row -->
                     <div class="row">
-                        <div class="col-4">
-                            <img class="img-thumbnail rounded-circle" src="./img/undraw_profile.svg">
-                        </div>
-                        <div class="col-8">
-                            <div class="row">
-                                <h1 id="profile-name" class="h1 mb-0 text-gray-800"></h1>
-                            </div>
-                            <div class="row">
-                                <h1 id="profile-email" class="h2 mb-0 text-gray-800">test</h1>
-                            </div>
-                        </div>
+
+                        <table id="ann_table" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <a class="button" id="del-ann">
+                                            <i class="fa-trash"></i>
+                                        </a>
+                                    </th>
+                                    <th scope="col">By</th>
+                                    <th scope="col">Message</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table_data">
+
+                            </tbody>
+
+                        </table>
+                        <button type="button" id="add-ann" class="btn btn-primary">Add</button>
                     </div>
 
                 </div>
@@ -328,7 +378,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -359,31 +409,24 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="./pages/login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="../js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
-    <script src="./js/cookies.js"></script>
-    <script src="./js/profile.js"></script>
+    <script src="../js/announcements.js"></script>
+    <script src="../js/cookies.js"></script>
 
 </body>
 

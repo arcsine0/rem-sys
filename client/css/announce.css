@@ -1,0 +1,8 @@
+.checkbox {
+    transform: scale(2);
+}
+.ann_check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
