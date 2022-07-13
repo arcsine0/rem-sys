@@ -29,6 +29,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
     <link href="css/admin.css" rel="stylesheet" />
+    <link href="css/announce.css" rel="stylesheet" />
 
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -74,6 +75,12 @@
         <!-- <div class="sidebar-heading">Interface</div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="./pages/property-list.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Properties</span></a
+          >
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="./pages/payment.html">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -247,33 +254,34 @@
           </div>
           
           <h1 class="h4 mb-4 text-gray-800">Announcements</h1>
-
-          <div class="row">
-
-              <table id="ann_table" class="table table-hover">
+          <div class="card-body">
+            <div class="">
+                <table id="ann_table" class="table table-hover" id="dataTable" width="100%">
                   <thead>
-                      <tr>
-                          <th scope="col">
-                              <a class="button" id="del-ann">
-                                  Delete
-                              </a>
-                          </th>
-                          <th scope="col">By</th>
-                          <th scope="col">Message</th>
-                      </tr>
+                    <tr>
+                      <th scope="col">
+                        <a class="button" id="del-ann">
+                          Delete
+                        </a>
+                      </th>
+                      <th scope="col">By</th>
+                      <th scope="col">Message</th>
+                    </tr>
                   </thead>
                   <tbody id="table_data">
-
+          
                   </tbody>
-
-              </table>
-              <button type="button" id="add-ann" class="btn btn-primary">Add</button>
-          </div>
+                </table>
+                <button type="button" id="add-ann" class="btn btn-primary">Make Announcement</button>
+            </div>
+        </div>
+         
+          
 
           <!-- Database -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Verify Payments</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Statistics</h6>
             </div>
               <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
@@ -329,7 +337,7 @@
                       <div class="row no-gutters align-items-center">
                           <div class="col mr-2">
                               <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                  Pending Requests</div>
+                                  Pending Payments</div>
                               <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                           </div>
                           <div class="col-auto">

@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const qs = require('querystring');
 const app = express();
 
 const mysql = require('mysql');
@@ -91,6 +90,30 @@ router.get('/user/payments', (req, res) => {
         }
     });
 });
+router.get('/user/propertylist', (req, res) => {
+    var query = 'SELECT * FROM propertylist';
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
+router.get('/user/propertylist/:id', (req, res) => {
+    var query = `SELECT * FROM propertylist WHERE id = ${req.params.id}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
 router.get('/users/list', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     
@@ -109,6 +132,16 @@ router.post('/user/announcements', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
     var query = `INSERT INTO announcements (poster, title, body) VALUES ("${data.name}", "${data.title}", "${data.body}")`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
+    });
+});
+router.post('/user/property/purchase', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    
+    var query = `INSERT INTO payments (name, address, amount) VALUES ("${data.name}", "${data.address}", "${data.price}")`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 

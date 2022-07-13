@@ -78,6 +78,12 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item active">
+          <a class="nav-link" href="./property-list.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Properties</span></a
+          >
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="./payment.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Payment</span></a
@@ -433,6 +439,9 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <div id="property-modal">
+            
+          </div>
           <div class="container-fluid">
             <!-- Page Heading -->
             <div
@@ -449,40 +458,51 @@
                                 <button type="button" class="btn btn-primary">Add New Property</button>
                             </a>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Property Name</th>
-                                            <th>Property Address</th>
-                                            <th>Owner</th>
-                                            <th>Monthly Payment</th>
-                                            <th>Monthly Due Date</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Property 1</td>
-                                            <td>Pasig City</td>
-                                            <td>Juan Cruz</td>
-                                            <td>P10,000.00</td>
-                                            <td>July 12, 2022</td>          
-                                            <td>
-                                                <a href="#" >
-                                                    <button type="button" class="btn btn-primary">Edit</button>
-                                                </a> 
-                                                 <a href="#" >
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </a> 
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <!-- <div class="card-body">
+                          <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                <tr>
+                                  <th>Property Name</th>
+                                  <th>Property Address</th>
+                                  <th>Owner</th>
+                                  <th>Monthly Payment</th>
+                                  <th>Monthly Due Date</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Property 1</td>
+                                  <td>Pasig City</td>
+                                  <td>Juan Cruz</td>
+                                  <td>P10,000.00</td>
+                                  <td>July 12, 2022</td>
+                                  <td>
+                                    <a href="#">
+                                      <button type="button" class="btn btn-primary">Edit</button>
+                                    </a>
+                                    <a href="#">
+                                      <button type="button" class="btn btn-danger">Delete</button>
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div> -->
+                        <div id="property-list" class="d-flex">
+                          <div class="card m-3" style="width: 18rem;">
+                            <img src="../img/placeholder-home.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
+                          </div>
+                          
                         </div>
-                    </div>
+                      </div>
                     <!-- End of Table -->
                         
 
@@ -568,6 +588,7 @@
     <script src="../js/demo/chart-pie-demo.js"></script>
 
     <script src="../js/cookies.js"></script>
+    <script src="../js/propertyList.js"></script>
     <script src="../js/profile.js"></script>
   </body>
 </html>
