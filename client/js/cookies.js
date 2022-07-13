@@ -5,9 +5,12 @@ $(document).ready(() => {
     var adminControls = $('.adminControls');
     adminControls.hide();
 
-    $('#nav-username').html(username);
+    $('#validate').hide();
+    $('#user-type').html(username);
 
-    if (role == 'admin' || role == 'staff') {
+    if (role == 'admin' ||  role == 'staff') {
         adminControls.toggle();
+        $('#payment').hide();
+        $('#validate').show();
     }
 });

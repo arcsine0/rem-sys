@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const mysql = require('mysql');
+const e = require('express');
 
 var router = express.Router();
 var jsonParser = bodyParser.json();
@@ -67,7 +68,7 @@ router.get('/user/announcements', (req, res) => {
     });
 });
 router.get('/user/transactions', (req, res) => {
-    var query = 'SELECT * FROM transactions';
+    var query = 'SELECT * FROM payments';
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 
@@ -78,8 +79,20 @@ router.get('/user/transactions', (req, res) => {
         }
     });
 });
-router.get('/user/payments', (req, res) => {
-    var query = 'SELECT * FROM payments';
+router.get('/user/payments/:id', (req, res) => {
+    var query = `SELECT * FROM payments WHERE user_id = ${req.params.id}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
+router.get('/user/validate/payments', (req, res) => {
+    var query = `SELECT * FROM payments WHERE status = "pending"`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 
@@ -128,6 +141,16 @@ router.get('/users/list', (req, res) => {
         }
     });
 });
+router.post('/user/validate/payments', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    
+    var query = `UPDATE payments SET status = "${data.status}" WHERE id = ${data.id}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
+    });
+});
 router.post('/user/announcements', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
@@ -141,7 +164,7 @@ router.post('/user/announcements', (req, res) => {
 router.post('/user/property/purchase', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
-    var query = `INSERT INTO payments (name, address, amount) VALUES ("${data.name}", "${data.address}", "${data.price}")`;
+    var query = `INSERT INTO payments (user_id, buyer, name, address, amount) VALUES ("${data.user_id}", "${data.user_name}","${data.name}", "${data.address}", "${data.price}")`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 

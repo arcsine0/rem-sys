@@ -1,4 +1,6 @@
 $(document).ready(() => {
+    var user_id = localStorage.getItem('id');
+    var user_name = localStorage.getItem('username');
     function loadProperty() {
         $.ajax({
             url: 'http://localhost:4000/user/propertylist/',
@@ -49,7 +51,7 @@ $(document).ready(() => {
                 if (data) {
                     var propertyModal = `
                                         <div class="modal fade" id="viewProp" tabindex="-1" aria-labelledby="view" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h3 class="modal-title" id="property-name">${data[0].name}</h3>
@@ -86,6 +88,8 @@ $(document).ready(() => {
         var propertyID = buttonID[1];
         var data = [
                     {name: "id", value: propertyID},
+                    {name: "user_id", value: user_id},
+                    {name: "user_name", value: user_name},
                     {name: "name", value: $('#property-modal #property-name').html()},
                     {name: "address", value:  $('#property-modal #property-address').html()},
                     {name: "price", value:  $('#property-modal #property-price').html() * 12},

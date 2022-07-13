@@ -81,23 +81,22 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Properties</span></a
           >
-        </li>
-        <li class="nav-item active">
+        </li><li id="payment" class="nav-item">
           <a class="nav-link" href="./payment.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Payment</span></a
+          >
+        </li>
+        <li id="validate" class="nav-item active">
+          <a class="nav-link" href="./approve-payments.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Validate Payments</span></a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./transaction-history.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Transaction History</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./inbox.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Inbox</span></a
           >
         </li>
         <li class="nav-item">
@@ -467,31 +466,8 @@
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>5535451</td>
-                                            <td>Austin, Robertson A.</td>
-                                            <td>Property 1</td>
-                                            <td>11121512454</td>
-                                            <td>GCash</td>
-                                            <td>July 12, 2022</td>
-                                            <td>P10,000.00</td>
-                                            <td>
-                                                File preview?
-                                            </td>
-                                            <td>
-                                                 <a href="#" class="btn btn-success btn-circle btn-sm">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-xmark"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-primary btn-circle btn-sm">
-                                                    <i class="fas fa-envelope"></i>
-                                                </a>
-
-                                            </td>
-                                        </tr>
+                                    <tbody id="table_data">
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -582,6 +558,7 @@
     <script src="../js/demo/chart-pie-demo.js"></script>
 
     <script src="../js/cookies.js"></script>
+    <script src="../js/validate.js"></script>
     <script src="../js/profile.js"></script>
   </body>
 </html>
