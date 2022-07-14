@@ -1,4 +1,4 @@
-<!-- Settings -->
+<!-- File attachment -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Settings</title>
+    <title>Payment</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -76,9 +76,8 @@
         <!-- <div class="sidebar-heading">Interface</div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
-
-        <!-- Start of Navbar Items -->
-        <li class="memberControls nav-item">
+                <!-- Start of Navbar Items -->
+        <li class="memberControls nav-item active">
           <a class="nav-link" href="./payment.html">
             <i class="fas fa-fw fa-file-invoice-dollar"></i>
             <span>Payment</span></a
@@ -150,7 +149,7 @@
             <span>Profile</span></a
           >
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="./settings.html">
             <i class="fas fa-fw fa-cog"></i>
             <span>Settings</span></a
@@ -160,7 +159,7 @@
       </ul>
       <!-- End of Sidebar -->
 
-      <!-- Content Wrapper -->
+      <!-- Content Warapper -->
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
@@ -443,7 +442,7 @@
                   <div class="dropdown-divider"></div>
                   <a
                     class="dropdown-item"
-                    href="#"
+                    href="./login.html"
                     data-toggle="modal"
                     data-target="#logoutModal"
                   >
@@ -459,22 +458,30 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <div class="modal fade" id="paymentPortal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="modal-label">Payment Portal</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  You do not have permission to make changes.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="container-fluid">
             <!-- Page Heading -->
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Settings</h1>
+              <h1 class="h3 mb-0 text-gray-800" id="property-name">Property Name</h1>
             </div>
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- User Information -->
-              <div class="user-info card shadow mb-4">TEST</div>
-            </div>
-            <!-- End of User Information -->
-          </div>
-
+       
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
@@ -531,7 +538,7 @@
             >
               Cancel
             </button>
-            <a class="btn btn-primary" href="./pages/login.html">Logout</a>
+            <a class="btn btn-primary" href="./login.html">Logout</a>
           </div>
         </div>
       </div>
@@ -548,12 +555,15 @@
     <script src="../js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
 
     <script src="../js/cookies.js"></script>
+    <script src="../js/payments.js"></script>
     <script src="../js/profile.js"></script>
   </body>
 </html>
