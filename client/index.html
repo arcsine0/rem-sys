@@ -1,3 +1,19 @@
+<!-- 
+      member:
+      - view announcements,  next due date, amount to pay next due date
+      - view properties
+
+      staff:
+      - view announcements, num of payments for verification, num of payments due today
+      - view properties
+
+      admin:
+      - crud announcements
+      - num of payments for verification, num of payments due today
+      - view properties
+ -->
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +26,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Member Dashboard</title>
+    <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -488,45 +504,68 @@
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
           </div>
           
-          <h1 class="h4 mb-4 text-gray-800">Announcements</h1>
-          <div class="card-body">
-            <div class="">
-                <table id="ann_table" class="table table-hover" id="dataTable" width="100%">
-                  <thead>
-                    <tr>
-                      <th scope="col">
-                        <a class="button" id="del-ann">
-                          Delete
-                        </a>
-                      </th>
-                      <th scope="col">By</th>
-                      <th scope="col">Message</th>
-                    </tr>
-                  </thead>
-                  <tbody id="table_data">
+          <!-- <h1 class="h4 mb-4 text-gray-800">Announcements</h1> -->
           
-                  </tbody>
-                </table>
-                <button type="button" id="add-ann" class="btn btn-primary adminControls">Make Announcement</button>
-            </div>
-        </div>
-         
-          
+          <!-- Announcements -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary text-uppercase">Announcements</h6>
+                </div>
+              <div class="card-body">
+                  <div class="">
+                      <table id="ann_table" class="table table-hover" id="dataTable" width="100%">
+                        <thead>
+                          <tr>
+                            <th scope="col">
+                              <a class="button" id="del-ann">
+                                Delete
+                              </a>
+                            </th>
+                            <th scope="col">By</th>
+                            <th scope="col">Message</th>
+                          </tr>
+                        </thead>
+                        <tbody id="table_data">
+                
+                        </tbody>
+                      </table>
+                      <button type="button" id="add-ann" class="btn btn-primary adminControls">Make Announcement</button>
+                  </div>
+              </div>
+          </div>
+          <!-- End of Announcements -->
 
-          <!-- Database -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Statistics</h6>
+          <!-- Members Overview Row -->
+          <div class="row memberControls">
+
+            <!-- Next Due Date -->
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Next Due Date</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="due">July 21, 2022</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
+            <!-- End of Next Due Date -->
+
+            <!-- Amount Due -->
+            <div class="col-xl-4 col-md-6 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Earnings (Annual)</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1" id="amount">
+                                    Amount Due</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">P12,000</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -534,56 +573,57 @@
                         </div>
                     </div>
                 </div>
-          </div>
+            </div>
+             <!-- End of Amount Due -->
 
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                  <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                          <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                              </div>
-                              <div class="row no-gutters align-items-center">
-                                  <div class="col-auto">
-                                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                  </div>
-                                  <div class="col">
-                                      <div class="progress progress-sm mr-2">
-                                          <div class="progress-bar bg-info" role="progressbar"
-                                              style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                              aria-valuemax="100"></div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-auto">
-                              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Pending Requests Card Example -->
-          <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                  <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                          <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                  Pending Payments</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                          </div>
-                          <div class="col-auto">
-                              <i class="fas fa-comments fa-2x text-gray-300"></i>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- /.container-fluid -->
+            <!-- Num of Pending Payments -->
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Num of Pending Payments (<span id="month">July</span>) </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="num-pending">1</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- End of Num of Pending Payments -->
         </div>
+        <!-- Num of Members Overview Row -->
+
+        <!-- View Properties -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+                  <h6 class="m-0 font-weight-bold text-primary text-uppercase">Properties</h6>
+              
+              <a href="#" >
+                  <button type="button" class="btn btn-primary adminControls">Add New Property</button>
+              </a>
+              </div>
+          </div>
+          <div id="property-list" class="d-flex">
+            <div class="card m-3" style="width: 18rem;">
+              <img src="./img/placeholder-home.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <!-- End of View Properties -->
+        
+          
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
