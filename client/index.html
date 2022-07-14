@@ -47,6 +47,8 @@
     <link href="css/admin.css" rel="stylesheet" />
     <link href="css/announce.css" rel="stylesheet" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -596,6 +598,50 @@
              <!-- End of Num of Pending Payments -->
         </div>
         <!-- Num of Members Overview Row -->
+
+
+        <!-- Admin/Staff Overview Row -->
+          <div class="row  staffControls">
+
+            <!-- Num of Payments for Verification -->
+            <div class="col-xl-6 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Number of Payments for Verification</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="num-verification">4</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-circle-check fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Num of Payments for Verification -->
+
+            <!-- Num of Payments Due Today -->
+            <div class="col-xl-6 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1" id="amount">
+                                     Number of Payments Due Today</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="num-due">1</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- End of  Num of Payments Due Today --> 
+        </div>
+        <!-- Num of Admin/Staff Overview Row -->
 
         <!-- View Properties -->
         <div class="card shadow mb-4">
