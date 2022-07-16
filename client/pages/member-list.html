@@ -12,7 +12,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Payment</title>
+    <title>Member List</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -77,7 +77,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
                 <!-- Start of Navbar Items -->
-        <li class="memberControls nav-item active">
+        <li class="memberControls nav-item">
           <a class="nav-link" href="./payment.html">
             <i class="fas fa-fw fa-file-invoice-dollar"></i>
             <span>Payment</span></a
@@ -105,7 +105,7 @@
           >
         </li>
 
-        <li class="staffControls adminControls nav-item">
+        <li class="staffControls adminControls nav-item active">
           <a class="nav-link" href="./member-list.html">
             <i class="fas fa-fw fa-users"></i>
             <span>List of Members</span></a
@@ -467,7 +467,7 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Payment</h1>
+              <h1 class="h3 mb-0 text-gray-800">List of Members</h1>
             </div>
 
              <!-- Database -->
@@ -480,11 +480,10 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Property Name</th>
-                                            <th>Property Address</th>
+                                            <th>Member Name</th>
+                                            <th>Property Owned</th>
                                             <th>Due Date</th>
                                             <th>Amount Due</th>
-                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_data">
@@ -517,7 +516,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
+        <footer class="sticky-footer bg-white fixed-bottom">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
               <span>Copyright &copy; Caballegan, Lee, Kim (CS209)</span>
