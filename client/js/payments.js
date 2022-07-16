@@ -18,7 +18,7 @@ $(document).ready(() => {
                                             <td>${el.due}</td>
                                             <td>P${el.amount}</td>
                                             <td>
-                                                <a>
+                                                <a href="./make-payment.html">
                                                     <button type="button" class="btn btn-primary pay">Pay Now</button>
                                                 </a> 
                                                 <a href="./property-info.html" >

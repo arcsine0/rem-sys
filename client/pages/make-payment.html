@@ -76,7 +76,7 @@
         <!-- <div class="sidebar-heading">Interface</div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
-                <!-- Start of Navbar Items -->
+        <!-- Start of Navbar Items -->
         <li class="memberControls nav-item active">
           <a class="nav-link" href="./payment.html">
             <i class="fas fa-fw fa-file-invoice-dollar"></i>
@@ -458,18 +458,35 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
-          <div class="modal fade" id="paymentPortal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+          <div
+            class="modal fade"
+            id="paymentPortal"
+            tabindex="-1"
+            aria-labelledby="view"
+            aria-hidden="true"
+          >
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h3 class="modal-title" id="modal-label">Payment Portal</h3>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
                 <div class="modal-body">
                   You do not have permission to make changes.
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
             </div>
@@ -479,13 +496,327 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800" id="property-name">Property Name</h1>
+              <h1 class="h3 mb-0 text-gray-800" id="property-name">
+                Payment Details
+              </h1>
             </div>
-       
+
+            <div class="row">
+              <div class="col-lg-6">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                    role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">HOW TO PAY?</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardExample">
+                    <div class="card-body">
+                       <ol >
+                          <li>
+                            <p>You must pay on  the amount due on or before the due date. Refer to the property information below this section. You may send the payment to the following payment channels:</p>
+                            <div class="card">
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  <p><b>GCash</b></p>
+                                  <p>Account Name: Ryanne K.</p>
+                                  <p>Account Number: +6300-0000-000</p>
+                                </li>
+                                <li class="list-group-item">
+                                  <p><b>Bank Transfer (Unionbank)</b></p>
+                                  <p>Account Name: Ryanne Gail Kim</p>
+                                  <p>Account Number: +6300-0000-000</p>
+                                </li>
+                              </ul>
+                            </div>  
+                          </li>
+                          <li style="margin-top: 10px">
+                            After the payment, fill up the payment information and attach the receipt. This will be used for verification details.
+                          </li>
+                          <li style="margin-top: 10px">
+                            You will be notified via email if your payment is verified. Please wait for 1 - 3 working days for the verification process.
+                          </li>
+                       </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- End of How to Pay -->
+
+                <!-- Property Information -->
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      PROPERTY INFORMATION
+                    </h6>
+                  </div>
+                  <!-- Property Name	Property Address	Due Date	Amount Due	 -->
+                  <div class="card-body">
+                    <div class="row">
+                      <img
+                        src="../img/placeholder-home.png"
+                        alt=""
+                        style="width: 100%; padding: 0 30px 20px 30px"
+                      />
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="name" class="col-sm-3 col-form-label"
+                        >Property Name:</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          readonly
+                          class="form-control-plaintext"
+                          id="name"
+                          value="[Property Name]"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="address" class="col-sm-3 col-form-label"
+                        >Property Address:</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          readonly
+                          class="form-control-plaintext"
+                          id="address"
+                          value="[Property Address]"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="due" class="col-sm-3 col-form-label"
+                        >Due Date:
+                      </label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          readonly
+                          class="form-control-plaintext"
+                          id="due"
+                          value="[Due Date]"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="amount" class="col-sm-3 col-form-label"
+                        >Amount Due:</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          readonly
+                          class="form-control-plaintext"
+                          id="amount"
+                          value="[Amount Due]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Property Information -->
+                
+              </div>
+
+              <!-- Brand Buttons
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Brand Buttons
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <p>
+                    Google and Facebook buttons are available featuring each
+                    company's respective brand color. They are used on the user
+                    login and registration pages.
+                  </p>
+                  <p>
+                    You can create more custom buttons by adding a new color
+                    variable in the <code>_variables.scss</code> file and then
+                    using the Bootstrap button variant mixin to create a new
+                    style, as demonstrated in the
+                    <code>_buttons.scss</code> file.
+                  </p>
+                  <a href="#" class="btn btn-google btn-block"
+                    ><i class="fab fa-google fa-fw"></i> .btn-google</a
+                  >
+                  <a href="#" class="btn btn-facebook btn-block"
+                    ><i class="fab fa-facebook-f fa-fw"></i> .btn-facebook</a
+                  >
+                </div>
+              </div>
+            </div>
+            </div -->
+
+           
+            <div class="col-lg-6">
+
+              
+              <!-- Payment Information -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    PAYMENT INFORMATION
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <form action="">
+                    <fieldset class="form-group">
+                      <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                          Payment Method:
+                        </legend>
+                        <div class="col-sm-9">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="gridRadios"
+                              id="gridRadios1"
+                              value="option1"
+                              checked
+                            />
+                            <label class="form-check-label" for="gridRadios1">
+                              <p>GCash</p>
+                              <img
+                                src="../img/GCash-Logo.png"
+                                alt="GCash"
+                                style="width: 200px"
+                              />
+                            </label>
+                          </div>
+                          <div class="form-check" style="padding-top: 20px">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="gridRadios"
+                              id="gridRadios2"
+                              value="option2"
+                            />
+                            <label class="form-check-label" for="gridRadios2">
+                              <p>Credit or Debit Transfer</p>
+                              <img
+                                src="../img/debitcredit.png"
+                                alt="Credit or Debit Transfer"
+                                style="width: 200px"
+                              />
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+
+                    <!-- <div class="form-group row">
+                      <label for="acc-name" class="col-sm-3 col-form-label"
+                        >Account Name:</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="acc-name"
+                          value=""
+                        />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="acc-num" class="col-sm-3 col-form-label"
+                        >Account Number:</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="acc-num"
+                          value=""
+                        />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="ref-num" class="col-sm-3 col-form-label"
+                        >Reference Number:</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="ref-num"
+                          value=""
+                        />
+                      </div>
+                    </div> -->
+
+                    <div class="form-group">
+                      <label for="ref-num">Account Name:</label>
+                      <input type="text" class="form-control" id="ref-num" placeholder="Account Name">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ref-num">Account Number:</label>
+                      <input type="text" class="form-control" id="ref-num" placeholder="Account Number">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="ref-num">Reference Number:</label>
+                      <input type="text" class="form-control" id="ref-num" placeholder="Reference Number">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ref-num">Date of Payment:</label>
+                      <input type="date" class="form-control" id="ref-num" placeholder="Reference Number">
+                    </div>
+
+                    
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Upload the receipt of your transaction here.</label>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                      </div>
+                    </div>
+                  
+                  
+                    <!-- <div class="form-group row">
+                      <label for="receipt" class="col-sm-5 col-form-label"
+                        >Attach Transaction Receipt</label
+                      >
+                      <div class="col-sm-7">
+                       <input type="file" class="custom-file-input" id="receipt"
+                        aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                      </div>
+                    </div> -->
+
+                    <!-- <div class="input-group mb-3">
+
+                      <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                      <input type="file" class="form-control" id="inputGroupFile01">
+                    </div> -->
+
+                    <div class="d-flex justify-content-end " style="gap: 10px; padding-top: 20px">
+                      <button type="reset" class="btn btn-outline-secondary" type="submit">Clear Form</button>
+                      <a href="#" >
+                          <button type="button" class="btn btn-primary submit-payment">Submit Payment Form</button>
+                      </a> 
+                    </div>                
+                  </form>
+                </div>
+              </div>
+              <!-- End of Payment Information -->
+            </div>
+          </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
