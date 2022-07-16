@@ -61,4 +61,25 @@ $(document).ready(() => {
 
         });
     });
+
+    $('#forgotPass').on('click', () => {
+        var f_data = $('form').serializeArray();
+        var email = f_data[0].value;
+        $.ajax({
+            url: `http://localhost:4000/user/forgot/${email}`,
+            method: 'GET',
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: false
+            },
+            success: (data) => {
+                if (data) {
+                    console.log(data);
+                }   
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    });
 });

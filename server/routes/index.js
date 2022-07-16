@@ -5,11 +5,22 @@ const app = express();
 const mysql = require('mysql');
 const e = require('express');
 
+const nodemailer = require('nodemailer');
+
 var router = express.Router();
 var jsonParser = bodyParser.json();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+let transport = nodemailer.createTransport({
+    host: 'smtp.mailtrap.io',
+    port: 2525,
+    auth: {
+      user: "c347695f25be88",
+      pass: "cedb7cc5977f6c"
+    }
+ });
 
 // credentials
 const conn = mysql.createConnection({
@@ -40,6 +51,34 @@ router.get('/user/login/:email/:pass', (req, res) => {
         }
     });
 });
+router.get('/user/forgot/:email', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    
+    var query = `SELECT password FROM users WHERE email = "${req.params.email}"`;  
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            const mailOptions = {
+                from: 'no-reply@gmail.com', // Sender address
+                to: 'raphael.caballegan@gmail.com', // List of recipients
+                subject: 'Password Recovery', // Subject line
+                html: `<p>The password for this account is ${rows[0].password}. Use it to login!</p>`
+            };
+            transport.sendMail(mailOptions, function(err, info) {
+                if (err) {
+                  console.log(err)
+                } else {
+                  console.log(info);
+                }
+            });
+
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
 router.get('/user/profile/:id', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     
@@ -53,7 +92,18 @@ router.get('/user/profile/:id', (req, res) => {
             res.send('failed');
         }
     });  
+});
+router.get('/user/dashboard/:id', (req, res) => {
+    var query = `SELECT amount, MIN(DATE_FORMAT(due,"%M %d, %Y")) as due, COUNT(status) as pending FROM payments WHERE status = "pending" AND user_id = ${req.params.id}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
 
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
 });
 router.get('/user/announcements', (req, res) => {
     var query = 'SELECT * FROM announcements';
@@ -67,19 +117,7 @@ router.get('/user/announcements', (req, res) => {
         }
     });
 });
-router.get('/user/transactions', (req, res) => {
-    var query = 'SELECT * FROM payments';
-    conn.query(query, (err, rows, fields) => {
-        if (err) throw err;
-
-        if (rows.length > 0) {
-            res.send(rows);
-        } else {
-            res.send('failed');
-        }
-    });
-});
-router.get('/user/payments/:id', (req, res) => {
+router.get('/user/transactions/:id', (req, res) => {
     var query = `SELECT * FROM payments WHERE user_id = ${req.params.id}`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
@@ -91,8 +129,20 @@ router.get('/user/payments/:id', (req, res) => {
         }
     });
 });
+router.get('/user/payments/:id', (req, res) => {
+    var query = `SELECT * FROM payments WHERE user_id = ${req.params.id} AND status = "pending"`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
 router.get('/user/validate/payments', (req, res) => {
-    var query = `SELECT * FROM payments WHERE status = "pending"`;
+    var query = `SELECT *,DATE_FORMAT(paidAt,"%M %d, %Y") as paidAt FROM payments WHERE status = "pending" AND paidAT IS NOT NULL`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 
@@ -115,8 +165,32 @@ router.get('/user/propertylist', (req, res) => {
         }
     });
 });
-router.get('/user/propertylist/:id', (req, res) => {
+router.get('/user/propertylist/details/:id', (req, res) => {
     var query = `SELECT * FROM propertylist WHERE id = ${req.params.id}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
+router.get('/user/propertylist/approved', (req, res) => {
+    var query = `SELECT id, name, address FROM payments WHERE status = "approved"`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
+router.get('/user/propertyinfo/:id', (req, res) => {
+    var query = `SELECT name, address, due, amount FROM payments WHERE id = ${req.params.id}`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 
@@ -151,6 +225,16 @@ router.post('/user/validate/payments', (req, res) => {
         res.send('success');
     });
 });
+router.post('/user/payment/pay', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    
+    var query = `UPDATE payments SET reference = "${data.reference}", paidAt = "${data.paidAt}" WHERE id = ${data.id}`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
+    });
+});
 router.post('/user/announcements', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
@@ -164,7 +248,7 @@ router.post('/user/announcements', (req, res) => {
 router.post('/user/property/purchase', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
-    var query = `INSERT INTO payments (user_id, buyer, name, address, amount) VALUES ("${data.user_id}", "${data.user_name}","${data.name}", "${data.address}", "${data.price}")`;
+    var query = `INSERT INTO payments (user_id, buyer, name, address, amount, due) VALUES ("${data.user_id}", "${data.user_name}","${data.name}", "${data.address}", "${data.price}", DATE_ADD("${data.due}", INTERVAL 1 MONTH))`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 

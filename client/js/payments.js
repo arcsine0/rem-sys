@@ -11,18 +11,23 @@ $(document).ready(() => {
             success: (data) => {
                 if (data) {
                     data.forEach((el, index) => {
+                        var DT_parts = el.due.split(/[- :]/);
+                        // DT_parts[1]--;
+                        
+                        console.log(DT_parts);
+                        var due_date = new Date(...DT_parts);
                         var data_row = `
                                         <tr>
                                             <td>${el.name}</td>
                                             <td>${el.address}</td>
-                                            <td>${el.due}</td>
+                                            <td>${due_date}</td>
                                             <td>P${el.amount}</td>
                                             <td>
-                                                <a href="./make-payment.html">
-                                                    <button type="button" class="btn btn-primary pay">Pay Now</button>
+                                                <a>
+                                                    <button type="button" data-id="pay_${el.id}" class="btn btn-primary pay">Pay Now</button>
                                                 </a> 
                                                 <a href="./property-info.html" >
-                                                    <button type="button" id="p_${el.id}" class="btn btn-info">View Property</button>
+                                                    <button type="button" data-id="p_${el.id}" class="btn btn-info">View Property</button>
                                                 </a> 
                                             </td>
                                         </tr>
@@ -42,8 +47,28 @@ $(document).ready(() => {
         loadPay();
     }
     $('#table_data').on('click', '.pay', (event) => {
-        var buttonID = $(event.target).attr('id').split('_');
-        var propertyID = buttonID[1];
-        console.log(propertyID);
+        var buttonID = $(event.target).data('id').split('_');
+        var payID = buttonID[1];
+        $.ajax({
+            url: `http://localhost:4000/user/propertyinfo/${payID}`,
+            method: 'GET',
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: false
+            },
+            success: (data) => {
+                if (data) {
+                    window.localStorage.setItem('propertyName', data[0].name);
+                    window.localStorage.setItem('propertyAddress', data[0].address);
+                    window.localStorage.setItem('propertyDue', data[0].due);
+                    window.localStorage.setItem('propertyAmount', data[0].amount);
+                    window.localStorage.setItem('paymentID', payID);
+                    window.location.href = "./make-payment.html";
+                }   
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
     })
 });

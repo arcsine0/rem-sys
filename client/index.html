@@ -67,10 +67,10 @@
         <!-- Sidebar - Brand -->
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
+          href="../index.html"
         >
           <div class="sidebar-brand-icon">
-            <img src="img\logo.png" alt="" class="logo" />
+            <img src="../img/logo.png" alt="" class="logo" />
           </div>
           <div class="sidebar-brand-text mx-3">Real Estate System</div>
         </a>
@@ -80,7 +80,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="./index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
           >
@@ -93,42 +93,42 @@
         <!-- <div class="sidebar-heading">Interface</div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link" href="./pages/property-list.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Properties</span></a
-          >
-        </li>
-        <li id="payment" class="nav-item">
+               <!-- Start of Navbar Items -->
+        <li class="memberControls nav-item">
           <a class="nav-link" href="./pages/payment.html">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-file-invoice-dollar"></i>
             <span>Payment</span></a
           >
         </li>
-        <li id="validate" class="nav-item">
+
+        <li class="adminControls staffControls nav-item">
           <a class="nav-link" href="./pages/approve-payments.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Validate Payments</span></a
+            <i class="fas fa-fw fa-file-circle-check"></i>
+            <span>Payment Verification</span></a
           >
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="./pages/property-list.html">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Properties</span></a
+          >
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="./pages/transaction-history.html">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-history"></i>
             <span>Transaction History</span></a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./pages/profile.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Profile</span></a
+
+        <li class="staffControls adminControls nav-item">
+          <a class="nav-link" href="./pages/member-list.html">
+            <i class="fas fa-fw fa-users"></i>
+            <span>List of Members</span></a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./pages/settings.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Settings</span></a
-          >
-        </li>
+
         <li class="adminControls nav-item">
           <a
             class="nav-link collapsed"
@@ -138,7 +138,7 @@
             aria-expanded="true"
             aria-controls="collapseUsers"
           >
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Users</span>
           </a>
           <div
@@ -147,12 +147,32 @@
             aria-labelledby="headingUsers"
             data-parent="#accordionSidebar"
           >
-            <div class="bg-white py-2 collapse-inner rounded adminControls">
+            <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Set Users:</h6>
-              <a class="collapse-item" href="./pages/userList.html">List</a>
+              <a class="collapse-item" href="./pages/userList.html">User Roles</a>
             </div>
           </div>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="./pages/inbox.html">
+            <i class="fas fa-fw fa-envelope"></i>
+            <span>Inbox</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./pages/profile.html">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./pages/settings.html">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Settings</span></a
+          >
+        </li>
+        <!-- End of Navbar Items -->
       </ul>
       <!-- End of Sidebar -->
 
@@ -548,7 +568,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Next Due Date</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="due">July 21, 2022</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="due">All Paid!</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -567,7 +587,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1" id="amount">
                                     Amount Due</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">P12,000</div>
+                                <div id="amount-due" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -585,7 +605,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Num of Pending Payments (<span id="month">July</span>) </div>
+                                    Num of Pending Payments </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800" id="num-pending">1</div>
                             </div>
                             <div class="col-auto">
@@ -604,7 +624,7 @@
           <div class="row adminControls staffControls">
 
             <!-- Num of Payments for Verification -->
-            <div class="col-xl-6 col-md-6 mb-4">
+            <!-- <div class="col-xl-6 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -619,11 +639,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- End of Num of Payments for Verification -->
 
             <!-- Num of Payments Due Today -->
-            <div class="col-xl-6 col-md-6 mb-4">
+            <!-- <div class="col-xl-6 col-md-6 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -638,7 +658,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
              <!-- End of  Num of Payments Due Today --> 
         </div>
         <!-- Num of Admin/Staff Overview Row -->
@@ -648,22 +668,22 @@
           <div class="card-header py-3">
             <div class="d-flex justify-content-between align-items-center">
               <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-                  <h6 class="m-0 font-weight-bold text-primary text-uppercase">Properties</h6>
+                  <h6 class="m-0 font-weight-bold text-primary text-uppercase">Properties Owned</h6>
               
-              <a href="#" >
+              <!-- <a href="#" >
                   <button type="button" class="btn btn-primary adminControls">Add New Property</button>
-              </a>
+              </a> -->
               </div>
           </div>
           <div id="property-list" class="d-flex">
-            <div class="card m-3" style="width: 18rem;">
+            <!-- <div class="card m-3" style="width: 18rem;">
               <img src="./img/placeholder-home.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
-            </div>
+            </div> -->
             
           </div>
         </div>
@@ -745,6 +765,6 @@
 
     <script src="./js/cookies.js"></script>
     <script src="./js/announcements.js"></script>
-    <script src="./js/profile.js"></script>
+    <script src="./js/dash.js"></script>
   </body>
 </html>

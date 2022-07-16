@@ -35,13 +35,13 @@ $(document).ready(() => {
     loadProperty();
     function refreshProperty() {
         $('#property-list').empty()
-        refreshProperty();
+        loadProperty();
     }
     $('#property-list').on('click', '.property-details', (event) => {
         var buttonID = $(event.target).attr('id').split('_');
         var propertyID = buttonID[1]
         $.ajax({
-            url: `http://localhost:4000/user/propertylist/${propertyID}`,
+            url: `http://localhost:4000/user/propertylist/details/${propertyID}`,
             method: 'GET',
             crossDomain: true,
             xhrFields: {
@@ -86,13 +86,18 @@ $(document).ready(() => {
     $('#property-modal').on('click', '.purchase', (event) => {
         var buttonID = $(event.target).attr('id').split('_');
         var propertyID = buttonID[1];
+
+        var today = new Date().toISOString().slice(0, 19).replace('T', ' ');  
+        // var dateNow = new Date(today.getFullYear, today.getMonth, today.getDate);
+
         var data = [
                     {name: "id", value: propertyID},
                     {name: "user_id", value: user_id},
                     {name: "user_name", value: user_name},
                     {name: "name", value: $('#property-modal #property-name').html()},
                     {name: "address", value:  $('#property-modal #property-address').html()},
-                    {name: "price", value:  $('#property-modal #property-price').html() * 12},
+                    {name: "price", value:  $('#property-modal #property-price').html()},
+                    {name: "due", value: today}
                     ]
         $.ajax({
             url: 'http://localhost:4000/user/property/purchase',

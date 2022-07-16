@@ -18,16 +18,16 @@ $(document).ready(() => {
                                             <td>${el.name}</td>
                                             <td>${el.reference}</td>
                                             <td>${el.mode}</td>
-                                            <td>${el.due}</td>
+                                            <td>${el.paidAt}</td>
                                             <td>${el.amount}</td>
                                             <td>
                                                 File preview?
                                             </td>
                                             <td>
-                                                <button id="approved_${el.id}" class="btn btn-success btn-circle btn-sm validate">
+                                                <button data-id="approved_${el.id}" class="btn btn-success btn-circle btn-sm validate">
                                                     <i class="fas fa-check"></i>
                                                 </button>
-                                                <button id="rejected_${el.id}" class="btn btn-danger btn-circle btn-sm validate">
+                                                <button data-id="rejected_${el.id}" class="btn btn-danger btn-circle btn-sm validate">
                                                     <i class="fas fa-xmark"></i>
                                                 </button>
                                                 <a href="#" class="btn btn-primary btn-circle btn-sm">
@@ -51,8 +51,7 @@ $(document).ready(() => {
         loadPay();
     }
     $('#table_data').on('click', '.validate', (event) => {
-        console.log($(event.target).attr('id'));
-        var buttonID = $(event.target).attr('id').split('_');
+        var buttonID = $(event.target).data('id').split('_');
         
         var propertyID = buttonID[1];
         if (propertyID != undefined) {

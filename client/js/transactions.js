@@ -1,7 +1,8 @@
 $(document).ready(() => {
+    var user_id = window.localStorage.getItem('id');
     function loadTrans() {
         $.ajax({
-            url: 'http://localhost:4000/user/transactions/',
+            url: `http://localhost:4000/user/transactions/${user_id}`,
             method: 'GET',
             crossDomain: true,
             xhrFields: {

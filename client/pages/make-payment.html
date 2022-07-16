@@ -667,7 +667,7 @@
                   </h6>
                 </div>
                 <div class="card-body">
-                  <form action="">
+                  <form action="" id="payment-form">
                     <fieldset class="form-group">
                       <div class="row">
                         <legend class="col-form-label col-sm-3 pt-0">
@@ -678,7 +678,7 @@
                             <input
                               class="form-check-input"
                               type="radio"
-                              name="gridRadios"
+                              name="GCash"
                               id="gridRadios1"
                               value="option1"
                               checked
@@ -696,7 +696,7 @@
                             <input
                               class="form-check-input"
                               type="radio"
-                              name="gridRadios"
+                              name="Credit/Debit"
                               id="gridRadios2"
                               value="option2"
                             />
@@ -757,22 +757,22 @@
 
                     <div class="form-group">
                       <label for="ref-num">Account Name:</label>
-                      <input type="text" class="form-control" id="ref-num" placeholder="Account Name">
+                      <input type="text" name="buyer" class="form-control" id="ref-num" placeholder="Account Name">
                     </div>
 
                     <div class="form-group">
                       <label for="ref-num">Account Number:</label>
-                      <input type="text" class="form-control" id="ref-num" placeholder="Account Number">
+                      <input id="accountNum" type="text" name="id" class="form-control" id="ref-num" placeholder="" disabled>
                     </div>
                     
                     <div class="form-group">
                       <label for="ref-num">Reference Number:</label>
-                      <input type="text" class="form-control" id="ref-num" placeholder="Reference Number">
+                      <input type="text" name="reference" class="form-control" id="ref-num" placeholder="Reference Number">
                     </div>
 
                     <div class="form-group">
                       <label for="ref-num">Date of Payment:</label>
-                      <input type="date" class="form-control" id="ref-num" placeholder="Reference Number">
+                      <input type="date" id="paidDate" class="form-control" id="ref-num" placeholder="">
                     </div>
 
                     
@@ -804,7 +804,7 @@
 
                     <div class="d-flex justify-content-end " style="gap: 10px; padding-top: 20px">
                       <button type="reset" class="btn btn-outline-secondary" type="submit">Clear Form</button>
-                      <a href="#" >
+                      <a>
                           <button type="button" class="btn btn-primary submit-payment">Submit Payment Form</button>
                       </a> 
                     </div>                
@@ -894,7 +894,7 @@
     <script src="../js/demo/chart-pie-demo.js"></script>
 
     <script src="../js/cookies.js"></script>
-    <script src="../js/payments.js"></script>
+    <script src="../js/make-payments.js"></script>
     <script src="../js/profile.js"></script>
   </body>
 </html>
