@@ -2,7 +2,7 @@
   "_args": [
     [
       "@fortawesome/fontawesome-free@5.15.3",
-      "D:\\vscode\\rsm-sys\\rsm-sys\\client"
+      "D:\\Users\\Dietrich\\Documents\\GitHub\\rem-sys\\client"
     ]
   ],
   "_from": "@fortawesome/fontawesome-free@5.15.3",
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz",
   "_spec": "5.15.3",
-  "_where": "D:\\vscode\\rsm-sys\\rsm-sys\\client",
+  "_where": "D:\\Users\\Dietrich\\Documents\\GitHub\\rem-sys\\client",
   "author": {
     "name": "Dave Gandy",
     "email": "dave@fontawesome.com",
