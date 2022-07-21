@@ -123,4 +123,35 @@ $(document).ready(() => {
             }
         });
     })
+    $('#add').on('click', () => {
+        $('#addModal').modal('show');
+    });
+    $('#save-add').on('click', () => {
+        var f_data = $('#add-form').serializeArray();
+        f_data.push({name: "due", value: new Date().toISOString().slice(0, 19).replace('T', ' ')});
+        $.ajax({
+            url: 'http://localhost:4000/user/propertylist/add',
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },
+            type: 'POST',
+            data: f_data,
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: false
+            },
+            success: (data) => {
+                if (data) {
+                    if (data == 'success') {
+                        console.log('saved');
+                        $('#addModal').modal('hide');
+                        refreshProperty();
+                    }
+                }
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    });
 });

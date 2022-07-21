@@ -447,6 +447,47 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Add Property</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="add-form" class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label"">Property Name</label>
+                                        <input name="name" id="add-name" type="text" class="form-control" placeholder="Name">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label"">Description</label>
+                                        <textarea name="desc" id="add-desc" class="form-control"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label"">Property Address</label>
+                                        <input name="address" id="add-address" type="text" class="form-control" placeholder="Address">
+                                    </div>
+                                    <div class="col-12">
+                                      <label class="form-label"">Property Owner</label>
+                                      <input name="owner" id="add-owner" type="text" class="form-control" placeholder="Address">
+                                  </div>
+                                    <div class="col-12">
+                                        <label class="form-label"">Price</label>
+                                        <input name="price" id="add-price" type="text" class="form-control" placeholder="PHP 0,000">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button id="save-add" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
           <div id="property-modal">
             
           </div>
@@ -463,7 +504,7 @@
                         <div class="card-header py-3">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
                             <a href="#" >
-                                <button type="button" class="btn btn-primary adminControls">Add New Property</button>
+                                <button type="button" id="add" class="btn btn-primary adminControls">Add New Property</button>
                             </a>
                         </div>
                         <!-- <div class="card-body">

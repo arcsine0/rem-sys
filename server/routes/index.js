@@ -215,6 +215,20 @@ router.get('/users/list', (req, res) => {
         }
     });
 });
+router.get('/users/list/approved', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    
+    var query = 'SELECT buyer, name, due, amount FROM payments WHERE status = "approved"';
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        if (rows.length > 0) {
+            res.send(rows);
+        } else {
+            res.send('failed');
+        }
+    });
+});
 router.post('/user/validate/payments', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
@@ -239,6 +253,16 @@ router.post('/user/announcements', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
     var query = `INSERT INTO announcements (poster, title, body) VALUES ("${data.name}", "${data.title}", "${data.body}")`;
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
+    });
+});
+router.post('/user/propertylist/add', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    
+    var query = `INSERT INTO propertylist (name, description, address, owner, monthly, due) VALUES ("${data.name}", "${data.desc}","${data.address}", "${data.owner}", "${data.price}", DATE_ADD("${data.due}", INTERVAL 1 MONTH))`;
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 

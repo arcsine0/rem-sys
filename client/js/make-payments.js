@@ -31,7 +31,6 @@ $(document).ready(() => {
                 if (data) {
                     if (data == 'success') {
                         console.log('saved');
-                        refreshUsers()
                     }
                 }
             },

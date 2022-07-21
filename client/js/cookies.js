@@ -8,5 +8,7 @@ $(document).ready(() => {
     if (role == 'admin' ||  role == 'staff') {
         $('.memberControls').hide();
         $('.adminControls').show();
+
+        $('#del-ann').html('Delete');
     }
 });
