@@ -61,9 +61,13 @@ router.get('/user/forgot/:email', (req, res) => {
         if (rows.length > 0) {
             const mailOptions = {
                 from: 'no-reply@gmail.com', // Sender address
-                to: 'raphael.caballegan@gmail.com', // List of recipients
+                to: req.params.email, // List of recipients
                 subject: 'Password Recovery', // Subject line
-                html: `<p>The password for this account is ${rows[0].password}. Use it to login!</p>`
+                html: `<h2>It seems that you forget the password for your account</h2>
+                        <p>The password you requested to recover is: </p>
+                        <h3>${rows[0].password}</h3>
+                        <p>Use this to login to your account!</p>
+                `
             };
             transport.sendMail(mailOptions, function(err, info) {
                 if (err) {
@@ -93,8 +97,14 @@ router.get('/user/profile/:id', (req, res) => {
         }
     });  
 });
-router.get('/user/dashboard/:id', (req, res) => {
-    var query = `SELECT amount, MIN(DATE_FORMAT(due,"%M %d, %Y")) as due, COUNT(status) as pending FROM payments WHERE status = "pending" AND user_id = ${req.params.id}`;
+router.get('/user/dashboard/:id/:role', (req, res) => {
+    var query;
+    if (req.params.role === "admin" || req.params.role === "staff") {
+        query = `SELECT amount, MIN(DATE_FORMAT(due,"%M %d, %Y")) as due, COUNT(status) as pending FROM payments WHERE status = "pending"`;
+    } else {
+        query = `SELECT amount, MIN(DATE_FORMAT(due,"%M %d, %Y")) as due, COUNT(status) as pending FROM payments WHERE status = "pending" AND user_id = ${req.params.id}`;
+    }
+    
     conn.query(query, (err, rows, fields) => {
         if (err) throw err;
 
@@ -227,6 +237,21 @@ router.get('/users/list/approved', (req, res) => {
         } else {
             res.send('failed');
         }
+    });
+});
+router.post('/user/profile/update/:which', (req, res) => {
+    var data = JSON.parse(JSON.stringify(req.body));
+    
+    if (req.params.which === 'account') {
+        var query = `UPDATE users SET email = "${req.body.email}", fname = "${req.body.fname}", mname = "${req.body.mname}", lname = "${req.body.lname}", contact = "${req.body.contact}", bio = "${req.body.bio}" WHERE id = ${req.body.id}`;
+    } else {
+        var query = `UPDATE users SET password = "${req.body.password}" WHERE id = ${req.body.id}`;
+    }
+    
+    conn.query(query, (err, rows, fields) => {
+        if (err) throw err;
+
+        res.send('success');
     });
 });
 router.post('/user/validate/payments', (req, res) => {

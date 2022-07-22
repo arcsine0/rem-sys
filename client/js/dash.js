@@ -1,8 +1,9 @@
 $(document).ready(() => {
-    var user_id = window.localStorage.getItem('id')
+    var user_id = window.localStorage.getItem('id');
+    var user_role = window.localStorage.getItem('role')
     function loadDues() {
         $.ajax({
-            url: `http://localhost:4000/user/dashboard/${user_id}`,
+            url: `http://localhost:4000/user/dashboard/${user_id}/${user_role}`,
             method: 'GET',
             crossDomain: true,
             xhrFields: {
@@ -11,6 +12,7 @@ $(document).ready(() => {
             success: (data) => {
                 if (data) {
                     $('#num-pending').html(data[0].pending);
+                    $('#num-verification').html(data[0].pending);
                     if (data[0].amount) {
                         $('#amount-due').html(`P${data[0].amount}`);
                     }

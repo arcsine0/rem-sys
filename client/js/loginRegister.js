@@ -1,6 +1,4 @@
 $(document).ready(() => {
-    console.log('api ready!');
-
     $('#login').on('click', () => {
         var f_data = $('form').serializeArray();
         var email = f_data[0].value;
@@ -62,9 +60,10 @@ $(document).ready(() => {
         });
     });
 
-    $('#forgotPass').on('click', () => {
-        var f_data = $('form').serializeArray();
+    $('#reset').on('click', () => {
+        var f_data = $('.user').serializeArray();
         var email = f_data[0].value;
+
         $.ajax({
             url: `http://localhost:4000/user/forgot/${email}`,
             method: 'GET',
