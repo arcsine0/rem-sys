@@ -23,6 +23,7 @@ $(document).ready(() => {
                     $('#lname').val(data[0].lname);
                     $('#email').val(data[0].email);
                     $('#contact').val(data[0].contact);
+                    $('#address').val(data[0].address);
                     $('#bio').val(data[0].bio);
 
                     $('#old-pass').val(data[0].password);
@@ -40,7 +41,8 @@ $(document).ready(() => {
         var f_data = $('#account-settings').serializeArray();
         f_data.push({name: 'id', value: user_id});
         
-        update = account;
+        update = 'account';
+        console.log(f_data);
         $.ajax({
             url: `http://localhost:4000/user/profile/update/${update}`,
             // headers: {
@@ -67,7 +69,7 @@ $(document).ready(() => {
     });
     $('#update_pass').on('click', () => {
         var data = [{name: 'id', value: user_id}, {name: 'password', value: $('#new-pass').val()}];
-        update = security;
+        update = 'security';
         $.ajax({
             url: `http://localhost:4000/user/profile/update/${update}`,
             // headers: {

@@ -243,9 +243,9 @@ router.post('/user/profile/update/:which', (req, res) => {
     var data = JSON.parse(JSON.stringify(req.body));
     
     if (req.params.which === 'account') {
-        var query = `UPDATE users SET email = "${req.body.email}", fname = "${req.body.fname}", mname = "${req.body.mname}", lname = "${req.body.lname}", contact = "${req.body.contact}", bio = "${req.body.bio}" WHERE id = ${req.body.id}`;
+        var query = `UPDATE users SET email = "${data.email}", fname = "${data.fname}", mname = "${data.mname}", lname = "${data.lname}", contact = "${data.contact}", address = "${data.address}", bio = "${data.bio}" WHERE id = ${data.id}`;
     } else {
-        var query = `UPDATE users SET password = "${req.body.password}" WHERE id = ${req.body.id}`;
+        var query = `UPDATE users SET password = "${data.password}" WHERE id = ${data.id}`;
     }
     
     conn.query(query, (err, rows, fields) => {
